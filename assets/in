@@ -11,7 +11,7 @@ payload=$(mktemp $TMPDIR/bosh-io-release-resource-request.XXXXXX)
 cat > $payload <&0
 
 repository=$(jq -r '.source.repository // ""' < $payload)
-version=$(jq -r '.version.version // ""' < $payload)
+version=$(jq -r '.source.version // ""' < $payload)
 fetch_tarball=$(jq -r '.params.tarball != false' < $payload)
 
 if [ -z "$repository" ]; then
